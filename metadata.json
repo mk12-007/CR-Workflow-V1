@@ -1,0 +1,8 @@
+{
+  "name": "Creative Timeline",
+  "description": "A modern, AI-powered project management application featuring smart task generation, automated sub-task breakdowns, and intuitive Kanban boards with a vibrant yellow aesthetic.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": []
+}

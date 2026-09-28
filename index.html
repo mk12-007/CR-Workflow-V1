@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Timeline - Modern Project Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          darkMode: 'class',
+          theme: {
+            extend: {
+              colors: {
+                navy: {
+                  DEFAULT: '#14213D',
+                  900: '#14213D',
+                  800: '#1C2C50',
+                  700: '#263B6B',
+                },
+                yellow: {
+                  50: '#fffdf5',
+                  100: '#fff9e6',
+                  200: '#fff1bf',
+                  300: '#ffdf80',
+                  400: '#ffd24d',
+                  500: '#FFC400', // Brand Primary
+                  600: '#e6b000',
+                  700: '#bf9200',
+                  800: '#997500',
+                  900: '#7d5f00',
+                }
+              },
+              fontFamily: {
+                sans: ['Inter', 'sans-serif'],
+              },
+            }
+          }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('ct_theme');
+          if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body class="overflow-hidden">
+    <!-- Early polyfill for process.env used by SDKs -->
+    <script>
+      window.process = window.process || { env: {} };
+    </script>
+    <div id="root"></div>
+    <!-- Entry point script to mount the React application -->
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
