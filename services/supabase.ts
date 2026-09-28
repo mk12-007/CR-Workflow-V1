@@ -71,8 +71,8 @@ export function mapProjectToDB(project: Partial<Project>): any {
   return row;
 }
 
-const SUPABASE_URL = 'https://dxksouerjenuxmygqffp.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR4a3NvdWVyamVudXhteWdxZmZwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk3NzQxOTcsImV4cCI6MjA4NTM1MDE5N30.vSfLkv1VVDuPZrF2HHcTk6saFwkZrZSJgnWGhwdtCQA';
+const DEFAULT_SUPABASE_URL = 'https://auiztubaftxesqlvjtqh.supabase.co';
+const DEFAULT_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF1aXp0dWJhZnR4ZXNxbHZqdHFoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA0NTI1MjksImV4cCI6MjEwNjAyODUyOX0.Fzp6OwVzPsYq99GwrPjl5jE3QfEpx_sgat-h8WsrobM';
 
 // Local persistence storage keys
 const LOCAL_STORAGE_USERS = 'ct_local_users';
@@ -566,9 +566,16 @@ class LocalFallbackClient {
   }
 }
 
-// Determine whether a real Supabase instance is configured via environment variables
-const rawSupabaseUrl = (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_SUPABASE_URL) || (typeof process !== 'undefined' && process.env?.VITE_SUPABASE_URL) || '';
-const envSupabaseKey = (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_SUPABASE_ANON_KEY) || (typeof process !== 'undefined' && process.env?.VITE_SUPABASE_ANON_KEY) || '';
+// Determine whether a real Supabase instance is configured via environment variables or default fallback
+const rawSupabaseUrl = 
+  (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_SUPABASE_URL) || 
+  (typeof process !== 'undefined' && process.env?.VITE_SUPABASE_URL) || 
+  DEFAULT_SUPABASE_URL;
+
+const envSupabaseKey = 
+  (typeof import.meta !== 'undefined' && (import.meta as any).env?.VITE_SUPABASE_ANON_KEY) || 
+  (typeof process !== 'undefined' && process.env?.VITE_SUPABASE_ANON_KEY) || 
+  DEFAULT_SUPABASE_ANON_KEY;
 
 // Strip any trailing /rest/v1 or slashes to ensure standard Supabase base URL format
 const envSupabaseUrl = rawSupabaseUrl.replace(/\/rest\/v1\/?$/, '').replace(/\/+$/, '');
